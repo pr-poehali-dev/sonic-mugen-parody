@@ -1,3 +1,14 @@
+export interface SuperForm {
+  name: string;
+  emoji: string;
+  colorHex: string;
+  bgGlow: string;
+  powerBoost: number;
+  speedBoost: number;
+  aura: string;
+  transformText: string;
+}
+
 export interface Character {
   id: string;
   name: string;
@@ -13,6 +24,9 @@ export interface Character {
   combos: string[];
   special: string;
   specialKey: string;
+  superForm?: SuperForm;
+  idleAnim: string;
+  attackAnim: string;
 }
 
 export const CHARACTERS: Character[] = [
@@ -31,6 +45,18 @@ export const CHARACTERS: Character[] = [
     combos: ["Spin Dash", "Homing Attack", "Blue Tornado"],
     special: "SUPER SONIC RUSH",
     specialKey: "↓↓A",
+    idleAnim: "sonic-idle",
+    attackAnim: "sonic-attack",
+    superForm: {
+      name: "SUPER SONIC",
+      emoji: "⭐",
+      colorHex: "#fbbf24",
+      bgGlow: "#fbbf24",
+      powerBoost: 2.5,
+      speedBoost: 3,
+      aura: "golden",
+      transformText: "SONIC GOES SUPER!",
+    },
   },
   {
     id: "shadow",
@@ -47,6 +73,18 @@ export const CHARACTERS: Character[] = [
     combos: ["Chaos Spear", "Black Tornado", "Chaos Blast"],
     special: "CHAOS CONTROL",
     specialKey: "↓↑B",
+    idleAnim: "shadow-idle",
+    attackAnim: "shadow-attack",
+    superForm: {
+      name: "SUPER SHADOW",
+      emoji: "💀",
+      colorHex: "#dc2626",
+      bgGlow: "#7f1d1d",
+      powerBoost: 2.8,
+      speedBoost: 2.5,
+      aura: "dark-red",
+      transformText: "CHAOS AWAKENED!",
+    },
   },
   {
     id: "knuckles",
@@ -63,6 +101,18 @@ export const CHARACTERS: Character[] = [
     combos: ["Drill Claw", "Thunder Arrow", "Quake Punch"],
     special: "MAXIMUM HEAT",
     specialKey: "→→A",
+    idleAnim: "knuckles-idle",
+    attackAnim: "knuckles-attack",
+    superForm: {
+      name: "HYPER KNUCKLES",
+      emoji: "🔥",
+      colorHex: "#f97316",
+      bgGlow: "#ea580c",
+      powerBoost: 3.5,
+      speedBoost: 1.5,
+      aura: "fire",
+      transformText: "EARTH SHAKER!",
+    },
   },
   {
     id: "tails",
@@ -79,6 +129,18 @@ export const CHARACTERS: Character[] = [
     combos: ["Tail Swipe", "Dummy Ring", "Energy Ball"],
     special: "MECH STORM",
     specialKey: "↑↑B",
+    idleAnim: "tails-idle",
+    attackAnim: "tails-attack",
+    superForm: {
+      name: "SUPER TAILS",
+      emoji: "⚡",
+      colorHex: "#fde68a",
+      bgGlow: "#d97706",
+      powerBoost: 2.2,
+      speedBoost: 2.8,
+      aura: "electric",
+      transformText: "SUPER FLIGHT MODE!",
+    },
   },
   {
     id: "amy",
@@ -95,6 +157,18 @@ export const CHARACTERS: Character[] = [
     combos: ["Hammer Swing", "Rose Typhoon", "Love Spark"],
     special: "PIKO PIKO CRUSH",
     specialKey: "←←A",
+    idleAnim: "amy-idle",
+    attackAnim: "amy-attack",
+    superForm: {
+      name: "FURY AMY",
+      emoji: "💖",
+      colorHex: "#fb7185",
+      bgGlow: "#e11d48",
+      powerBoost: 3.2,
+      speedBoost: 2,
+      aura: "rose",
+      transformText: "LOVE IS FURY!",
+    },
   },
   {
     id: "silver",
@@ -111,6 +185,18 @@ export const CHARACTERS: Character[] = [
     combos: ["Psycho Shock", "Telekinesis", "ESP Blast"],
     special: "IT'S NO USE!",
     specialKey: "↑→B",
+    idleAnim: "silver-idle",
+    attackAnim: "silver-attack",
+    superForm: {
+      name: "SUPER SILVER",
+      emoji: "🌟",
+      colorHex: "#e2e8f0",
+      bgGlow: "#94a3b8",
+      powerBoost: 2.6,
+      speedBoost: 2.4,
+      aura: "psychic",
+      transformText: "MIND OVER MATTER!",
+    },
   },
   {
     id: "blaze",
@@ -127,6 +213,18 @@ export const CHARACTERS: Character[] = [
     combos: ["Fire Claw", "Flame Wave", "Sol Inferno"],
     special: "BURNING BLAZE",
     specialKey: "↓←A",
+    idleAnim: "blaze-idle",
+    attackAnim: "blaze-attack",
+    superForm: {
+      name: "BURNING BLAZE",
+      emoji: "🔥",
+      colorHex: "#fb923c",
+      bgGlow: "#c2410c",
+      powerBoost: 3,
+      speedBoost: 2.5,
+      aura: "inferno",
+      transformText: "SOL EMERALDS AWAKEN!",
+    },
   },
   {
     id: "rouge",
@@ -143,6 +241,18 @@ export const CHARACTERS: Character[] = [
     combos: ["Screw Kick", "Bat Blade", "Shadow Drill"],
     special: "JEWEL STORM",
     specialKey: "↑←B",
+    idleAnim: "rouge-idle",
+    attackAnim: "rouge-attack",
+    superForm: {
+      name: "CHAOS ROUGE",
+      emoji: "💎",
+      colorHex: "#a855f7",
+      bgGlow: "#7e22ce",
+      powerBoost: 2.4,
+      speedBoost: 3,
+      aura: "crystal",
+      transformText: "JEWEL AWAKENING!",
+    },
   },
 ];
 
