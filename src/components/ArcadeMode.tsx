@@ -6,27 +6,33 @@ import { cn } from "@/lib/utils";
 
 type ArcadePhase = "intro" | "fighting" | "victory" | "gameover";
 
-const ARCADE_SEQUENCE = ["shadow", "knuckles", "tails", "blaze", "silver", "rouge", "amy"];
+const ARCADE_SEQUENCE = ["shadow", "knuckles", "tails", "blaze", "naruto", "goku", "dark_sonic"];
 
 interface Props {
   player: Character;
   onBack: () => void;
+  onRingsEarned?: (rings: number) => void;
 }
 
-export default function ArcadeMode({ player, onBack }: Props) {
+export default function ArcadeMode({ player, onBack, onRingsEarned }: Props) {
   const [phase, setPhase] = useState<ArcadePhase>("intro");
   const [currentRound, setCurrentRound] = useState(0);
   const [wins, setWins] = useState(0);
   const [losses, setLosses] = useState(0);
   const [lastResult, setLastResult] = useState<"win" | "lose" | "draw" | null>(null);
+  const [totalRings, setTotalRings] = useState(0);
 
   const currentEnemyId = ARCADE_SEQUENCE[currentRound % ARCADE_SEQUENCE.length];
   const currentEnemy = CHARACTERS.find((c) => c.id === currentEnemyId) || CHARACTERS[1];
   const totalRounds = ARCADE_SEQUENCE.length;
   const isLastRound = currentRound === totalRounds - 1;
 
-  const handleFightEnd = (result: "win" | "lose" | "draw") => {
+  const handleFightEnd = (result: "win" | "lose" | "draw", ringsEarned: number) => {
     setLastResult(result);
+    if (ringsEarned) {
+      setTotalRings(r => r + ringsEarned);
+      onRingsEarned?.(ringsEarned);
+    }
     if (result === "win" || result === "draw") {
       setWins((w) => w + 1);
       if (isLastRound) {
@@ -45,6 +51,7 @@ export default function ArcadeMode({ player, onBack }: Props) {
     setCurrentRound(0);
     setWins(0);
     setLosses(0);
+    setTotalRings(0);
     setLastResult(null);
     setPhase("intro");
   };
@@ -58,6 +65,9 @@ export default function ArcadeMode({ player, onBack }: Props) {
           <p className="text-white/40 text-xs mt-1">
             Пройдено раундов: {currentRound} / {totalRounds} · Побед: {wins}
           </p>
+          {totalRings > 0 && (
+            <p className="text-yellow-300 text-sm font-black mt-2">+{totalRings} 💍 заработано</p>
+          )}
         </div>
         <div className="flex gap-3">
           <button
